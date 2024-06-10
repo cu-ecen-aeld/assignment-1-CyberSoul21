@@ -14,7 +14,7 @@ else
     
     if [ -d $(dirname $writefile) ]
     then
-        echo "FOLDER EXISTS"
+        #echo "FOLDER EXISTS"
         if [ -e $writefile ]
         then
             rm $writefile
@@ -26,7 +26,7 @@ else
                 exit 1
             fi
         else
-            echo "Could not be created file ${writefile}" 
+            #echo "Could not be created file ${writefile}" 
             exit 1    
         fi
 
