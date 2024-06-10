@@ -53,35 +53,3 @@ else
         fi
     fi
 fi
-
-<<comment
-if [ -e $filesdir ]
-then
-    echo "FOLDER EXIST = ${filesdir}"
-    touch $writefile
-    if [ -e $writefile ]
-    then
-        echo $writestr >> $writefile
-    else
-        echo "Could not be created file ${writefile}" 
-        exit 1    
-    fi
-else
-    echo "FOLDER DOES NOT EXIST"
-    mkdir $filesdir
-    if [ -d $filesdir ]
-    then
-        touch $writefile
-        if [ -e $writefile ]
-        then
-            echo $writestr >> $writefile
-        else
-            echo "Could not be created file ${writefile}" 
-            exit 1    
-        fi
-    else
-        echo "Could not be created folder ${filesdir}" 
-        exit 1    
-    fi
-fi
-comment
