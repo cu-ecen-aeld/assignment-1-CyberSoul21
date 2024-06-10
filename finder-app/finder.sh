@@ -13,8 +13,8 @@ fi
 
 if [ -d $filesdir ]
 then
-    numberFiles=$( ls $filesdir | wc -l )
-    NumberMatchs=$(grep -r $searchstr $filesdir | wc -l)
+    numberFiles=$( find ${filesdir} -type f | wc -l )
+    NumberMatchs=$(grep -r ${searchstr} ${filesdir} | wc -l)
     echo "The number of files are ${numberFiles} and the number of matching lines are ${NumberMatchs}"
 else
     echo $filesdir "Does not exist"

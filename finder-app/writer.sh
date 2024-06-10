@@ -11,42 +11,25 @@ then
     #echo "Error 1"
     exit 1
 else
-    
-    if [ -d $(dirname $writefile) ]
+    if [ -d $( dirname $writefile ) ]
     then
         #echo "FOLDER EXISTS"
-        if [ -e $writefile ]
+        echo $writestr > $writefile
+        if [ ! -f "$writefile" ]
         then
-            rm $writefile
-            touch $writefile
-            if [ -e $writefile ]
+            echo "${writefile} could not be created."
+            exit 1
+        fi
+    else
+        mkdir -p $( dirname $writefile )
+        if [ -d $( dirname $writefile ) ]
+        then
+            echo $writestr > $writefile
+            if [ ! -f "$writefile" ]
             then
-                echo $writestr >> $writefile
-            else
+                echo "${writefile} could not be created."
                 exit 1
             fi
-        else
-            #echo "Could not be created file ${writefile}" 
-            exit 1    
-        fi
-
-    else
-        mkdir -p $(dirname $writefile)
-        if [ -d $(dirname $writefile) ]
-        then
-            #$fileDir=$(dirname $writefile)            
-            #echo "Folder Created"
-
-            touch $writefile
-            if [ -e $writefile ]
-            then
-                echo $writestr >> $writefile
-            else
-                #echo "Could not be created file ${writefile}" 
-                exit 1    
-            fi
-
-
         else
             #echo "Error 2"
             exit 1
